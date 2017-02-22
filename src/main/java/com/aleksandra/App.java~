@@ -1,0 +1,76 @@
+package com.aleksandra;
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
+
+
+public class App {
+    public static void main(String[] argv) {
+    /*    try {
+            Pokemon pokemon = new Pokemon("charizard");
+            pokemon.wypisz();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        App app = new App();
+        app.tableExample();
+    }
+    public void tableExample(){
+        Integer[] tab2 = new Integer[20];
+        for(int i =0; i < tab2.length; i++){
+            tab2[i] = randInt(0,100);
+        }
+
+        for(int i : tab2) {
+            System.out.print(i+ " ");
+        }
+        System.out.println();
+        Arrays.sort(tab2);  // sortowanie tablicy
+
+        for(int i : tab2) {
+            System.out.print(i+ " ");
+        }
+        System.out.println();
+
+        System.out.println(funkcja2(tab2,50));
+
+    }
+
+    public int randInt(int min, int max){
+        Random random = new Random();
+        int randNumber = random.nextInt(max - min + 1) + min;
+        return randNumber;
+    }
+
+    public boolean funkcja(Integer[] tab, int a ){
+        for(int i = 0; i < tab.length; i++){
+            for(int j = i+1; j < tab.length; j++){
+                int tmp = tab[i] + tab[j];
+                if(tmp == a) return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean funkcja2(Integer[] tab, int a){
+        int k = tab.length-1;
+        int j = 0;
+
+        while( k > j){
+            int tmp = tab[j] + tab[k];
+
+            if( tmp == a ) return true;
+
+            if(tmp > a){
+                k--;
+            }
+            else {
+                j++;
+            }
+        }
+        return false;
+    }
+}
